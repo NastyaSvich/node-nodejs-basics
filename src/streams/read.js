@@ -1,5 +1,22 @@
+import {fileURLToPath} from "url";
+import path from "path";
+import fs from "fs";
+
 const read = async () => {
-    // Write your code here 
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+
+    const filePath = path.resolve(__dirname, "files", "fileToRead.txt");
+
+    const readableStream  = fs.createReadStream(filePath);
+
+    readableStream.on('open', () => {
+        readableStream.pipe(process.stdout);
+    });
+
+    readableStream.on('end', () => {
+        console.log('\n');
+    });
 };
 
 await read();
