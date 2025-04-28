@@ -9,10 +9,7 @@ const read = async () => {
     const filePath = path.resolve(__dirname, "files", "fileToRead.txt");
 
     const readableStream  = fs.createReadStream(filePath);
-
-    readableStream.on('open', () => {
-        readableStream.pipe(process.stdout);
-    });
+    readableStream.pipe(process.stdout);
 
     readableStream.on('end', () => {
         console.log('\n');
