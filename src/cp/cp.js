@@ -10,8 +10,7 @@ const spawnChildProcess = async (args) => {
 
    spawn('node', [filePath, ...args], {
         stdio: [process.stdin, process.stdout, 'inherit']
-    });
+   });
 };
 
-// Вызов функции с тестовыми аргументами
 spawnChildProcess(['10', '20', '30']);
